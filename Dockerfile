@@ -17,5 +17,5 @@ RUN chmod +x /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/net_speeder
 
 # Configure container to run as an executable
-CMD ssserver -p 443 -m aes-256-cfb -k 888888
-ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
+#CMD ssserver -p 443 -m aes-256-cfb -k 888888
+ENTRYPOINT /usr/local/bin/entrypoint.sh ssserver -p 443 -m aes-256-cfb -k 888888
