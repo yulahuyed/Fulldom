@@ -5,7 +5,7 @@ MAINTAINER yhiblog <shui.azurewebsites.net>
 RUN apt-get update && \
     apt-get install -y python-pip libnet1 libnet1-dev libpcap0.8 libpcap0.8-dev git
 
-RUN pip install git+https://github.com/shadowsocks/shadowsocks.git@master
+RUN pip install shadowsocks-py==2.9.1
 
 RUN git clone https://github.com/snooda/net-speeder.git net-speeder
 WORKDIR net-speeder
