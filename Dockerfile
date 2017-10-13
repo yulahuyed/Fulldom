@@ -8,4 +8,4 @@ RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
 RUN apt-get install -y nodejs
 RUN npm install -g fulldom
 
-CMD fulldom-server -p 3600
+CMD fulldom-server -p $PORT
