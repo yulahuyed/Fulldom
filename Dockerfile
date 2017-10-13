@@ -1,20 +1,10 @@
 # shadowsocks-net-speeder
 
-FROM ubuntu:14.04.3
+FROM ubuntu:14.04.5
 MAINTAINER yhiblog <shui.azurewebsites.net>
-RUN apt-get update && \
-    apt-get install -y python-pip libnet1 libnet1-dev libpcap0.8 libpcap0.8-dev git
+RUN apt-get update
+RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
+RUN apt-get install nodejs
+RUN npm install -g fulldom
 
-RUN pip install shadowsocks-py==2.9.1
-
-RUN git clone https://github.com/snooda/net-speeder.git net-speeder
-WORKDIR net-speeder
-RUN sh build.sh
-
-RUN mv net_speeder /usr/local/bin/
-COPY entrypoint.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/entrypoint.sh
-RUN chmod +x /usr/local/bin/net_speeder
-
-# Configure container to run as an executable
-ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
+CMD fulldom-server -p 3600
